@@ -1,0 +1,71 @@
+.fullPageBackground {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRrxsjkDrNkWxHtREKf2vzNJT3u42LGUAsfhFWSMwgu0_K7QcKsQT3FQvTey9a6005jFNoJqVmmJhGavgAhD5k');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  width: 100vw;
+  position: relative;
+  height: 230px;
+}
+
+.bgButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 15%;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customButton {
+  width: 200px;
+}
+
+.textContent {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  margin-top: 20px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+.bgLang {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.customButton {
+  font-size: 16px;
+  padding: 24px 48px;
+  width: 300px;
+  height: 80px;
+  border-radius: 10px;
+}
+

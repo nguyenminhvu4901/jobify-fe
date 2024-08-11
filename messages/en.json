@@ -1,0 +1,8 @@
+{
+  "Switch": {
+    "job_seeder": "Job Seeder",
+    "recruiter": "Recruiter",
+    "note_job_seeder": "Click “Job Seeker” to look for jobs. \n(If you have not account please click to register)",
+    "note_recruiter": "Click “Recruiter” to post new jobs. \n(If you have not account please click to register)"
+  }
+}
