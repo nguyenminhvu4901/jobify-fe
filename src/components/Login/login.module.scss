@@ -1,19 +1,20 @@
 /* src/app/login/login.module.css */
+@import "@/assets/colors/colors.module";
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #d4d6ea;
+  background-color: $color-light-blue-purple;
 }
 
 .formContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: #ffffff;
+  background: $color-white;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px $color-white-transparent;
   width: 60%;
   height: 80%;
   overflow: auto;
@@ -121,4 +122,12 @@
   @media (max-width: 767px) {
     padding-top: 10px;
   }
+}
+
+.bgLang {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: flex-end;
 }

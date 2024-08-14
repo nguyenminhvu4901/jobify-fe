@@ -1,15 +1,17 @@
+@import '@/assets/colors/colors.module';
+
 .fullPageBackground {
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: url('http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRrxsjkDrNkWxHtREKf2vzNJT3u42LGUAsfhFWSMwgu0_K7QcKsQT3FQvTey9a6005jFNoJqVmmJhGavgAhD5k');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('/images/switch-bg/img-bg-switch.jpeg');
 }
 
 .bgCenter {
@@ -17,7 +19,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 15%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: $color-white;
   padding: 40px;
   width: 100vw;
   position: relative;
@@ -38,15 +40,26 @@
 }
 
 .customButton {
-  width: 200px;
+  font-size: 16px !important;
+  padding: 24px 48px !important;
+  width: 300px !important;
+  height: 80px !important;
+  border-radius: 10px !important;
+  background-color: $color-green-medium !important;
+
+  &:hover {
+    background-color: darken($color-green-medium, 10%) !important;
+    cursor: pointer !important;
+  }
 }
+
 
 .textContent {
   width: 100%;
   max-width: 300px;
   text-align: center;
   margin-top: 20px;
-  color: #000000;
+  color: $color-black;
   font-size: 16px;
   font-weight: bold;
   font-style: italic;
@@ -59,13 +72,5 @@
   right: 50px;
   display: flex;
   justify-content: flex-end;
-}
-
-.customButton {
-  font-size: 16px;
-  padding: 24px 48px;
-  width: 300px;
-  height: 80px;
-  border-radius: 10px;
 }
 

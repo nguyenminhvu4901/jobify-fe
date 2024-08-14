@@ -14,6 +14,8 @@ import ButtonLogin from "@/components/Button/Login/ButtonLogin";
 import RememberCheckbox from "@/components/Checkbox/Remember/Remember";
 import GoogleLoginButton from "@/components/Button/Google/GoogleLoginButton";
 import { Link } from '@/navigation';
+import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
+import Image from 'next/image';
 
 export default function LoginPage({title}) {
     const t = useTranslations("Login");
@@ -24,70 +26,79 @@ export default function LoginPage({title}) {
     }, []);
 
     return (
-        <div className={styles.container}>
-            <div className={`${styles.formContainer} ${isVisible ? styles.active : ''}`}>
-                <div className={styles.leftHalf}>
-                    <h1 className={styles.title}>
-                        {t('title')}
-                    </h1>
-                    <form className={styles.formCustom}>
-                        <FormGroup style={{gap: '10px'}}>
-                            <label className={styles.label}>
-                                {t('username')}
-                                <span style={{color: 'red'}}> *</span>
-                            </label>
-                            <TextField
-                                placeholder={t('enter_username')}
-                                className={styles.customTextField}
-                                sx={{
-                                    '& .MuiOutlinedInput-root': {
-                                        borderRadius: '12px',
-                                    }
-                                }}
-                            />
-                        </FormGroup>
-                        <br/>
-                        <FormGroup style={{gap: '10px'}}>
-                            <label className={styles.label}>
-                                {t('password')}
-                                <span style={{color: 'red'}}> *</span>
-                            </label>
-                            <PasswordInput
-                                placeholder={t('enter_password')}
-                                style={styles.customTextField}
-                            />
-                        </FormGroup>
-                        <div className={styles.formForgot}>
+        <div>
+            <div className={styles.bgLang}>
+                <LanguageSwitcher/>
+            </div>
+            <div className={styles.container}>
+                <div className={`${styles.formContainer} ${isVisible ? styles.active : ''}`}>
+                    <div className={styles.leftHalf}>
+                        <h1 className={styles.title}>
+                            {t('title')}
+                        </h1>
+                        <form className={styles.formCustom}>
                             <FormGroup style={{gap: '10px'}}>
-                                <RememberCheckbox label={t('remember')}/>
+                                <label className={styles.label}>
+                                    {t('username')}
+                                    <span style={{color: 'red'}}> *</span>
+                                </label>
+                                <TextField
+                                    placeholder={t('enter_username')}
+                                    className={styles.customTextField}
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '12px',
+                                        }
+                                    }}
+                                />
                             </FormGroup>
-                            <div className={styles.forgotPassword}>
-                                <Typography variant="body2" color="textPrimary">
-                                    {t('forgot')}
-                                </Typography>
+                            <br/>
+                            <FormGroup style={{gap: '10px'}}>
+                                <label className={styles.label}>
+                                    {t('password')}
+                                    <span style={{color: 'red'}}> *</span>
+                                </label>
+                                <PasswordInput
+                                    placeholder={t('enter_password')}
+                                    style={styles.customTextField}
+                                />
+                            </FormGroup>
+                            <div className={styles.formForgot}>
+                                <FormGroup style={{gap: '10px'}}>
+                                    <RememberCheckbox label={t('remember')}/>
+                                </FormGroup>
+                                <div className={styles.forgotPassword}>
+                                    <Typography variant="body2" color="textPrimary">
+                                        {t('forgot')}
+                                    </Typography>
+                                </div>
                             </div>
-                        </div>
-                        <ButtonLogin
-                            title={t('login')}
+                            <ButtonLogin
+                                title={t('login')}
+                            />
+                        </form>
+                        <Divider className={styles.divider}>{t('other')}</Divider>
+                        <GoogleLoginButton
+                            title={t('login_with_google')}
                         />
-                    </form>
-                    <Divider className={styles.divider}>{t('other')}</Divider>
-                    <GoogleLoginButton
-                        title={t('login_with_google')}
-                    />
-                    <div className={styles.divider}>
-                        <Typography variant="body2" color="textPrimary">
-                            {t('register_question')}
-                            <Link href="#">
-                                {t('register_now')}
-                            </Link>
-                        </Typography>
+                        <div className={styles.divider}>
+                            <Typography variant="body2" color="textPrimary">
+                                {t('register_question')}
+                                <Link href="#">
+                                    {t('register_now')}
+                                </Link>
+                            </Typography>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.rightHalf}>
-                    <img className={styles.imgLogin}
-                         src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
-                    />
+                    <div className={styles.rightHalf}>
+                        <Image
+                            src="/images/switch-bg/cat.webp"
+                            alt="Cat"
+                            className={styles.imgLogin}
+                            layout="fill"
+                            objectFit="cover"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

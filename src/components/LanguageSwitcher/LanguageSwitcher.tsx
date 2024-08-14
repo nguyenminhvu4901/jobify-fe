@@ -8,12 +8,19 @@ import { Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 export default function LanguageSwitcher() {
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
-    const localActive = useLocale();
+    const localActive = useLocale() || 'vi';
 
     const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const nextLocale = e.target.value;
+
+        const currentPath = window.location.pathname;
+        const pathWithoutLocale = currentPath.startsWith(`/${localActive}`)
+            ? currentPath.slice(localActive.length + 1)
+            : currentPath;
+        const newPath = `/${nextLocale}${pathWithoutLocale}`;
+
         startTransition(() => {
-            router.replace(`/${nextLocale}`);
+            router.replace(newPath);
         });
     };
 
