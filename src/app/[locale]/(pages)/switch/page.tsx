@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './index.module.scss';
 import { Button } from "@mui/material";
 import { useTranslations } from 'next-intl';
@@ -12,7 +14,7 @@ export default function SwitchLogin() {
             <div className={styles.bgCenter}>
                 <div className={styles.bgButton}>
                     <div className={styles.buttonContainer}>
-                        <Link href="/login">
+                        <Link href="/job-seeder/login">
                             <Button variant="contained" className={styles.customButton}>
                                 {t('job_seeder')}
                             </Button>
@@ -21,7 +23,7 @@ export default function SwitchLogin() {
                     </div>
 
                     <div className={styles.buttonContainer}>
-                        <Link href="/login">
+                        <Link href="/recruiter/login">
                             <Button variant="contained" className={styles.customButton}>
                                 {t('recruiter')}
                             </Button>
