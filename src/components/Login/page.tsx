@@ -16,14 +16,52 @@ import GoogleLoginButton from "@/components/Button/Google/GoogleLoginButton";
 import { Link } from '@/navigation';
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Image from 'next/image';
+import API from '@/services/api';
+import Cookies from 'js-cookie';
 
 export default function LoginPage({title}) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<{ username?: string; password?: string; general?: string }>({});
     const t = useTranslations("Login");
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const response = await API.login(username, password);
+            console.log(response);
+            if(response?.data?.data)
+            {
+                const { token, expires_in_token } = response?.data?.data;
+                Cookies.set('token', token, { expires: expires_in_token / 1440 });
+            }else{
+                setErrors(
+                    {
+                        general: response?.data?.message,
+                        password: Array.isArray(response.data.message?.password) ? response.data.message.password[0] : '',
+                        username: Array.isArray(response.data.message?.username) ? response.data.message.username[0] : ''
+                    }
+                );
+            }
+        } catch (err) {
+            console.log(err);
+            setError('Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin.');
+        }
+    };
+
+    const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>, field: keyof typeof errors) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        setter(e.target.value);
+        setErrors(prevErrors => ({
+            ...prevErrors,
+            [field]: ''
+        }));
+    };
 
     return (
         <div>
@@ -36,7 +74,7 @@ export default function LoginPage({title}) {
                         <h1 className={styles.title}>
                             {t('title')}
                         </h1>
-                        <form className={styles.formCustom}>
+                        <form className={styles.formCustom} onSubmit={handleLogin}>
                             <FormGroup style={{gap: '10px'}}>
                                 <label className={styles.label}>
                                     {t('username')}
@@ -45,12 +83,16 @@ export default function LoginPage({title}) {
                                 <TextField
                                     placeholder={t('enter_username')}
                                     className={styles.customTextField}
+                                    value={username}
+                                    name={username}
+                                    onChange={handleInputChange(setUsername, 'username')}
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '12px',
                                         }
                                     }}
                                 />
+                                {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>}
                             </FormGroup>
                             <br/>
                             <FormGroup style={{gap: '10px'}}>
@@ -59,9 +101,13 @@ export default function LoginPage({title}) {
                                     <span style={{color: 'red'}}> *</span>
                                 </label>
                                 <PasswordInput
+                                    value={password}
+                                    name={password}
                                     placeholder={t('enter_password')}
                                     style={styles.customTextField}
+                                    onChange={handleInputChange(setPassword, 'password')}
                                 />
+                                {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
                             </FormGroup>
                             <div className={styles.formForgot}>
                                 <FormGroup style={{gap: '10px'}}>
@@ -74,6 +120,7 @@ export default function LoginPage({title}) {
                                 </div>
                             </div>
                             <ButtonLogin
+                                type="submit"
                                 title={t('login')}
                             />
                         </form>

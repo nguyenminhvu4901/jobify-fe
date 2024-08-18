@@ -7,7 +7,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 
-const PasswordInput = ({placeholder, style}) => {
+const PasswordInput = ({placeholder, style, name, value, onChange}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -20,7 +20,10 @@ const PasswordInput = ({placeholder, style}) => {
             className={style}
             placeholder={placeholder}
             type={showPassword ? 'text' : 'password'}
+            name={name}
+            value={value}
             fullWidth
+            onChange={onChange}
             InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">

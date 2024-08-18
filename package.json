@@ -19,6 +19,7 @@
     "dotenv": "^16.4.5",
     "i18next": "^23.12.2",
     "i18next-resources-to-backend": "^1.2.1",
+    "js-cookie": "^3.0.5",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "next-i18n-router": "^5.5.1",

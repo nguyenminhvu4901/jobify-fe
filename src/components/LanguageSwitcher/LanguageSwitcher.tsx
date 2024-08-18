@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ChangeEvent, useTransition } from 'react';
 import { Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import {useTranslations} from "next-intl";
+import Cookies from 'js-cookie';
 
 export default function LanguageSwitcher() {
     const t = useTranslations("SwitchLang");
@@ -14,6 +15,8 @@ export default function LanguageSwitcher() {
 
     const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const nextLocale = e.target.value;
+
+        Cookies.set('locale', nextLocale, { expires: 365 });
 
         const currentPath = window.location.pathname;
         const pathWithoutLocale = currentPath.startsWith(`/${localActive}`)

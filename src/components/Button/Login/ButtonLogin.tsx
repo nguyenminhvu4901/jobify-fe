@@ -1,5 +1,4 @@
 import {Button} from "@mui/material";
-import styles from "@/components/Button/Login/styles.module.scss";
 import {styled} from "@mui/material";
 
 const CustomButton = styled(Button)`
@@ -24,6 +23,6 @@ const CustomButton = styled(Button)`
     }
 `;
 
-export default function ButtonLogin({title}) {
-    return <CustomButton>{title}</CustomButton>;
+export default function ButtonLogin({title, type}) {
+    return <CustomButton type={type}>{title}</CustomButton>;
 }
