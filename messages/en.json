@@ -19,5 +19,10 @@
     "register": "Register",
     "register_now": "Register now",
     "register_question": "Don't have account? "
+  },
+  "SwitchLang": {
+    "choose": "Choose Language",
+    "vietnamese": "Vietnamese",
+    "english": "English"
   }
 }

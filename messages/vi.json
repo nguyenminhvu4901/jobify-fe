@@ -19,5 +19,10 @@
     "register": "Đăng ký",
     "register_now": "Đăng ký ngay",
     "register_question": "Chưa có tài khoản? "
+  },
+  "SwitchLang": {
+    "choose": "Chọn ngôn ngữ",
+    "vietnamese": "Tiếng Việt",
+    "english": "Tiếng Anh"
   }
 }
