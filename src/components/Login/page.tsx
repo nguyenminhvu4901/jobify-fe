@@ -16,15 +16,32 @@ import GoogleLoginButton from "@/components/Button/Google/GoogleLoginButton";
 import { Link } from '@/navigation';
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Image from 'next/image';
-import API from '@/services/api';
 import Cookies from 'js-cookie';
+import { post } from '@/services/types';
+import apiEndpoints from "@/services/apiEndpoints";
+
+interface LoginData {
+    username: string;
+    password: string;
+    remember: boolean;
+}
+
+interface LoginResponse {
+    data: {
+        token: string;
+        expires_in_token: number;
+    };
+    message?: string;
+}
+
 
 export default function LoginPage({title}) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [remember, setRemember] = useState<boolean>(false);
     const [errors, setErrors] = useState<{ username?: string; password?: string; general?: string }>({});
     const t = useTranslations("Login");
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
         setIsVisible(true);
@@ -34,11 +51,16 @@ export default function LoginPage({title}) {
         e.preventDefault();
 
         try {
-            const response = await API.login(username, password);
-            console.log(response);
+            const data = {
+                'username': username,
+                'password': password,
+                'remember': remember
+            }
+            const response = await post<LoginData, LoginResponse>(apiEndpoints.LOGIN, data);
             if(response?.data?.data)
             {
                 const { token, expires_in_token } = response?.data?.data;
+                console.log(expires_in_token)
                 Cookies.set('token', token, { expires: expires_in_token / 1440 });
             }else{
                 setErrors(
@@ -51,7 +73,6 @@ export default function LoginPage({title}) {
             }
         } catch (err) {
             console.log(err);
-            setError('Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin.');
         }
     };
 
@@ -61,6 +82,10 @@ export default function LoginPage({title}) {
             ...prevErrors,
             [field]: ''
         }));
+    };
+
+    const handleRememberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setRemember(e.target.checked);
     };
 
     return (
@@ -111,7 +136,11 @@ export default function LoginPage({title}) {
                             </FormGroup>
                             <div className={styles.formForgot}>
                                 <FormGroup style={{gap: '10px'}}>
-                                    <RememberCheckbox label={t('remember')}/>
+                                    <RememberCheckbox
+                                        label={t('remember')}
+                                        checked={remember}
+                                        onChange={handleRememberChange}
+                                    />
                                 </FormGroup>
                                 <div className={styles.forgotPassword}>
                                     <Typography variant="body2" color="textPrimary">
