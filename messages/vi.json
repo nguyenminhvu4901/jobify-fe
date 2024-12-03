@@ -1,0 +1,28 @@
+{
+  "Switch": {
+    "job_seeder": "Người tìm việc",
+    "recruiter": "Nhà tuyển dụng",
+    "note_job_seeder": "Bấm vào “Người Tìm Việc” để tìm việc làm (Nếu bạn chưa có tài khoản, bấm vào để đăng ký)",
+    "note_recruiter": "Bấm vào \" Nhà Tuyển Dụng\" để đăng tin tuyển dụng (Nếu bạn chưa có tài khoản, bấm vào để đăng ký)"
+  },
+  "Login": {
+    "title": "Chào mừng đến với Jobify !",
+    "username": "Tên đăng nhập",
+    "enter_username": "Nhập tên đăng nhập...",
+    "password": "Mật khẩu",
+    "enter_password": "Nhập mật khẩu...",
+    "login": "Đăng nhập",
+    "remember": "Ghi nhớ mật khẩu",
+    "forgot": "Quên mật khẩu",
+    "other": "Hoặc, Đăng nhập với",
+    "login_with_google": "Đăng nhập với Google",
+    "register": "Đăng ký",
+    "register_now": "Đăng ký ngay",
+    "register_question": "Chưa có tài khoản? "
+  },
+  "SwitchLang": {
+    "choose": "Chọn ngôn ngữ",
+    "vietnamese": "Tiếng Việt",
+    "english": "Tiếng Anh"
+  }
+}

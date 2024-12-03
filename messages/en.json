@@ -1,0 +1,28 @@
+{
+  "Switch": {
+    "job_seeder": "Job Seeder",
+    "recruiter": "Recruiter",
+    "note_job_seeder": "Click “Job Seeker” to look for jobs. \n(If you have not account please click to register)",
+    "note_recruiter": "Click “Recruiter” to post new jobs. \n(If you have not account please click to register)"
+  },
+  "Login": {
+    "title": "Welcome to Jobify !",
+    "username": "Username",
+    "enter_username": "Enter username...",
+    "password": "Password",
+    "enter_password": "Enter password...",
+    "login": "Login",
+    "remember": "Remember",
+    "forgot": "Forgot password",
+    "other": "Or, Login with",
+    "login_with_google": "Login with Google",
+    "register": "Register",
+    "register_now": "Register now",
+    "register_question": "Don't have account? "
+  },
+  "SwitchLang": {
+    "choose": "Choose Language",
+    "vietnamese": "Vietnamese",
+    "english": "English"
+  }
+}

@@ -1,0 +1,18 @@
+.btnLogin {
+  width: 100%;
+  background-color: #054736;
+
+  &:hover {
+    background-color: #7ca29c; // Màu nền khi hover
+    cursor: pointer; // Con trỏ khi hover
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Đổ bóng khi hover
+    transform: scale(1.05); // Phóng to một chút khi hover
+    transition: all 0.3s ease; // Thay đổi mượt mà
+  }
+
+  // Hiệu ứng focus (khi nút được chọn)
+  &:focus {
+    outline: none; // Bỏ viền focus mặc định
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); // Đổ bóng focus
+  }
+}
